@@ -3,7 +3,7 @@ const fs = require('fs');
 const url = require('url');
 const { getDate } = require('./modules/utils');
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 443;
 
 const options = {
     key: fs.readFileSync('server.key'),
