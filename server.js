@@ -35,7 +35,6 @@ const server = https.createServer(options, (req, res) => {
             return;
         }
 
-        // Append text to file.txt, create if it does not exist
         fs.appendFile('file.txt', text + '\n', (err) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -47,7 +46,7 @@ const server = https.createServer(options, (req, res) => {
             res.end('Text appended successfully');
         });
     }else if (pathname.startsWith('/COMP4537/labs/3/readFile/') && req.method === 'GET') {
-        const filename = pathSegments.pop();  // Get the filename from the last segment
+        const filename = pathSegments.pop();  
 
         fs.readFile(filename, 'utf8', (err, data) => {
             if (err) {
@@ -57,7 +56,7 @@ const server = https.createServer(options, (req, res) => {
             }
 
             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end(data.replace(/\n/g, '<br>')); // Replace new lines with <br> for HTML display
+            res.end(data.replace(/\n/g, '<br>')); 
         });
     }else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
